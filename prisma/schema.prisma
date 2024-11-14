@@ -38,8 +38,8 @@ model Class {
 model Teacher {
   id         Int     @id @default(autoincrement())
   name       String
-  courseId   Int
-  course     Course  @relation(fields: [courseId], references: [id])
+  courseId   Int?
+  course     Course? @relation(fields: [courseId], references: [id])
   password   String
   url_img_db String?
 }

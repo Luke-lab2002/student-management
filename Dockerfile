@@ -9,6 +9,7 @@ WORKDIR /app
 # Copy file package.json và package-lock.json vào container và cài đặt các dependencies
 COPY package*.json ./
 RUN npm install
+RUN npm install bcrypt
 
 # Copy toàn bộ mã nguồn vào thư mục làm việc
 COPY . .
