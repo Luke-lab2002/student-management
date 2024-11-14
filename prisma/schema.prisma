@@ -12,3 +12,56 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Student {
+  id      Int      @id @default(autoincrement())
+  name    String
+  phone   String
+  email   String
+  address String
+  Dob     DateTime
+  Gender  Boolean
+  classId Int
+  class   Class    @relation(fields: [classId], references: [id])
+  Score   Score[]
+}
+
+model Class {
+  id       Int       @id @default(autoincrement())
+  name     String
+  courseId Int
+  Course   Course    @relation(fields: [courseId], references: [id])
+  Student  Student[]
+}
+
+model Teacher {
+  id       Int    @id @default(autoincrement())
+  name     String
+  courseId Int
+  course   Course @relation(fields: [courseId], references: [id])
+}
+
+model Subject {
+  id        Int     @id @default(autoincrement())
+  name      String
+  totaltime Int
+  Score     Score[]
+}
+
+model Course {
+  id        Int       @id @default(autoincrement())
+  name      String
+  dateStart DateTime
+  dateEnd   DateTime
+  Teacher   Teacher[]
+  Class     Class[]
+}
+
+model Score {
+  id        Int     @id @default(autoincrement())
+  score     Int
+  studentId Int
+  subjectId Int
+  student   Student @relation(fields: [studentId], references: [id])
+  Subject   Subject @relation(fields: [subjectId], references: [id])
+}
