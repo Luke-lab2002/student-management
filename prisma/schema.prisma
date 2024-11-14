@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
@@ -21,8 +22,8 @@ model Student {
   address String
   Dob     DateTime
   Gender  Boolean
-  classId Int
-  class   Class    @relation(fields: [classId], references: [id])
+  classId Int?
+  class   Class?   @relation(fields: [classId], references: [id])
   Score   Score[]
 }
 
@@ -35,10 +36,12 @@ model Class {
 }
 
 model Teacher {
-  id       Int    @id @default(autoincrement())
-  name     String
-  courseId Int
-  course   Course @relation(fields: [courseId], references: [id])
+  id         Int     @id @default(autoincrement())
+  name       String
+  courseId   Int
+  course     Course  @relation(fields: [courseId], references: [id])
+  password   String
+  url_img_db String?
 }
 
 model Subject {
