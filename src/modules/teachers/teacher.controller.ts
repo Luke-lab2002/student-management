@@ -10,7 +10,7 @@ export class TeacherController{
     
     @Get("/")
     HandleGetListTeacher(){
-        return this.teacherService.getListTecherDB();
+        return  this.teacherService.getListTecherDB();
     }
 
     @Post("/create-teacher")
@@ -25,12 +25,7 @@ export class TeacherController{
 
     @Put("/:id")
     HandleUpdateTeacher(@Param("id") id:number, @Body() teacherDTO:teacherDTO){
-        try {
-            return this.teacherService.updateTeacherDB(id, teacherDTO);
-        } catch (error) {
-            console.log(error);
-        }
-      
+        return this.teacherService.updateTeacherDB(id, teacherDTO);
     }
 
     @Delete("/:id")
