@@ -30,8 +30,8 @@ model Student {
 model Class {
   id       Int       @id @default(autoincrement())
   name     String
-  courseId Int
-  Course   Course    @relation(fields: [courseId], references: [id])
+  courseId Int?
+  Course   Course?   @relation(fields: [courseId], references: [id])
   Student  Student[]
 }
 
