@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Prisma, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { SubjectDTO } from "./dto/subject.dto";
 
 const prisma = new PrismaClient();

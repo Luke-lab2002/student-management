@@ -61,10 +61,10 @@ model Course {
 }
 
 model Score {
-  id        Int     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   score     Int
-  studentId Int
-  subjectId Int
-  student   Student @relation(fields: [studentId], references: [id])
-  Subject   Subject @relation(fields: [subjectId], references: [id])
+  studentId Int?
+  subjectId Int?
+  student   Student? @relation(fields: [studentId], references: [id])
+  Subject   Subject? @relation(fields: [subjectId], references: [id])
 }
