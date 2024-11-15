@@ -10,7 +10,7 @@ export class TeacherController{
     
     @Get("/")
     HandleGetListTeacher(){
-        return  this.teacherService.getListTecherDB();
+        return this.teacherService.getListTecherDB();
     }
 
     @Post("/create-teacher")
