@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { TeacherService } from "./teacher.service";
 import { teacherDTO } from "./dto/teacher.dto";
 
@@ -22,4 +22,20 @@ export class TeacherController{
     HandleGetTeacher(@Param("id") id:number){
         return this.teacherService.getTeacherDB(id);
     }
+
+    @Put("/:id")
+    HandleUpdateTeacher(@Param("id") id:number, @Body() teacherDTO:teacherDTO){
+        try {
+            return this.teacherService.updateTeacherDB(id, teacherDTO);
+        } catch (error) {
+            console.log(error);
+        }
+      
+    }
+
+    @Delete("/:id")
+    HandleDeleteTeacher(@Param("id") id:number){
+        return this.teacherService.deleteTeacherDB(id);
+    }
+
 }

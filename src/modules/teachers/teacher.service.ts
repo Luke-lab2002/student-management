@@ -37,5 +37,31 @@ export class TeacherService{
         return teacher;
     }
 
+    async updateTeacherDB(id:number, teacherDTO:teacherDTO){
+        let hashedpassword = await bcrypt.hash(teacherDTO.password, saltOrRounds);
+        const teacher = await prisma.teacher.update({
+            where: {
+                id: Number(id)
+            },
+            data: {
+                name:teacherDTO.name,
+                password:hashedpassword,
+                courseId:teacherDTO.courseId,
+                url_img_db:teacherDTO.url_img_db
+            }
+        })
+
+        return teacher;
+    }
+
+    async deleteTeacherDB(id:number){
+        const teacher = await prisma.teacher.delete({
+            where:{
+                id:Number(id)
+            }
+        })
+        return teacher
+    }
+
     
 }

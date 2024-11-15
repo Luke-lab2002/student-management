@@ -23,7 +23,7 @@ export class StudentController{
     }
 
     @Put("/:id")
-    HandleUpdateStudent(@Param('id') id:number,@Body() studentDTO: studentDTO){
+    HandleUpdateStudent(@Param('id') id:number, @Body() studentDTO: studentDTO){
         return this.studentService.updateStudentDB(id, studentDTO)
     }
 
