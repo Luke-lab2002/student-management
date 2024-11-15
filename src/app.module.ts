@@ -6,6 +6,7 @@ import { TeacherModule } from './modules/teachers/teacher.module';
 import { SubjectModule } from './modules/subject/subject.module';
 import { ScoreModule } from './modules/score/score.module';
 import { CourseModule } from './modules/course/course.module';
+import { ClassModule } from './modules/class/class.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { CourseModule } from './modules/course/course.module';
     TeacherModule, 
     SubjectModule, 
     ScoreModule,
-    CourseModule
+    CourseModule,
+    ClassModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -9,27 +9,27 @@ export class CourseController{
     }
     
     @Get()
-    HandleGetListScore(){
+    HandleGetListCourse(){
         return this.CourseService.getListCourseDB();
     }
 
     @Get("/:id")
-    HandleGetScore(@Param("id") id:number){
+    HandleGetCourse(@Param("id") id:number){
         return this.CourseService.getCourseDB(id);
     }
 
     @Post("/create-course")
-    HandleCreateScore(@Body() CourseDTO:CourseDTO){
+    HandleCreateCourse(@Body() CourseDTO:CourseDTO){
         return this.CourseService.createCourseDB(CourseDTO);
     }
 
     @Put("/:id")
-    HandleUpdateScore(@Param("id") id:number,@Body() CourseDTO: CourseDTO){
+    HandleUpdateCourse(@Param("id") id:number,@Body() CourseDTO: CourseDTO){
         return this.CourseService.updateCourseDB(id, CourseDTO);
     }
 
     @Delete("/:id")
-    HandleDeleteScore(@Param("id") id:number){
+    HandleDeleteCourse(@Param("id") id:number){
         return this.CourseService.deleteCourseDB(id);
     }
 
