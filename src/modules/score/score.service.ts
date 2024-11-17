@@ -16,7 +16,12 @@ export class ScoreService{
         const score = await prisma.score.findUnique({
             where:{
                 id:Number(id)
+            },
+            include:{
+                student:true,
+                Subject:true
             }
+            
         });
 
         return score;
@@ -25,9 +30,9 @@ export class ScoreService{
     async createScoreDB(ScoreDTO:ScoreDTO){
         const score = await prisma.score.create({
             data:{
-                score:ScoreDTO.score,
-                studentId:ScoreDTO.studentId,
-                subjectId:ScoreDTO.subjectId
+                score:Number(ScoreDTO.score),
+                studentId:Number(ScoreDTO.studentId),
+                subjectId:Number(ScoreDTO.subjectId)
             }
         });
 
@@ -40,9 +45,13 @@ export class ScoreService{
                 id:Number(id)
             },
             data:{
-                score:ScoreDTO.score,
-                studentId:ScoreDTO.studentId,
-                subjectId:ScoreDTO.subjectId
+                score:Number(ScoreDTO.score),
+                studentId:Number(ScoreDTO.studentId),
+                subjectId:Number(ScoreDTO.subjectId)
+            },
+            include:{
+                student:true,
+                Subject:true
             }
         });
 

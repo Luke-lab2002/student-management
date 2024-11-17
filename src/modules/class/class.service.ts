@@ -25,7 +25,7 @@ export class ClassService{
         const Class = await prisma.class.create({
             data:{
                 name: ClassDTO.name,
-                courseId: ClassDTO.courseId
+                courseId: Number(ClassDTO.courseId)
             }
         });
 
@@ -39,7 +39,7 @@ export class ClassService{
             },
             data:{
                 name: ClassDTO.name,
-                courseId: ClassDTO.courseId
+                courseId: Number(ClassDTO.courseId)
             }
         });
 

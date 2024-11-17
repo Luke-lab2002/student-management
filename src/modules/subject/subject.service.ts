@@ -15,7 +15,7 @@ export class SubjectService{
         const subject = await prisma.subject.create({
             data:{
                 name:SubjectDTO.name,
-                totaltime:SubjectDTO.totaltime
+                totaltime:Number(SubjectDTO.totaltime)
             }
         })
         return subject;
@@ -38,7 +38,7 @@ export class SubjectService{
             },
             data:{
                 name:SubjectDTO.name,
-                totaltime:SubjectDTO.totaltime
+                totaltime:Number(SubjectDTO.totaltime)
             }
         });
 

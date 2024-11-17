@@ -7,7 +7,11 @@ const prisma = new PrismaClient();
 @Injectable()
 export class StudentService{
     async getListStudentDB(){
-        const students = await prisma.student.findMany()
+        const students = await prisma.student.findMany({
+            include:{
+                class:true
+            }
+        })
         return students;
     }
 
@@ -31,6 +35,9 @@ export class StudentService{
         const student = await prisma.student.findUnique({
             where:{
                 id: Number(id)
+            },
+            include: {
+                class:true,
             }
         });
 
