@@ -1,15 +1,16 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { StudentModule } from './modules/students/student.module';
+import { StudentModule } from './modules/student/student.module';
 import { TeacherModule } from './modules/teachers/teacher.module';
 import { SubjectModule } from './modules/subject/subject.module';
 import { ScoreModule } from './modules/score/score.module';
 import { CourseModule } from './modules/course/course.module';
 import { ClassModule } from './modules/class/class.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { JwtAuthGuard } from './modules/Guards/jwt.auth.guard';
+import { JwtAuthGuard } from './modules/guards/jwt.auth.guard';
 import { APP_GUARD } from '@nestjs/core';
+import { delay } from './middleware/delay';
 
 @Module({
   imports: [
@@ -29,4 +30,10 @@ import { APP_GUARD } from '@nestjs/core';
     },
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+    .apply(delay)
+    .forRoutes("*")
+  }
+}
