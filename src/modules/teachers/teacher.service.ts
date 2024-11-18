@@ -21,6 +21,7 @@ export class TeacherService{
             data: {
                 name:teacherDTO.name,
                 age:Number(teacherDTO.age),
+                email:teacherDTO.email,
                 address:teacherDTO.address,
                 password:hashedpassword,
                 courseId:teacherDTO.courseId,
@@ -29,6 +30,16 @@ export class TeacherService{
         });
         return teacher;
     }
+
+    async getTeacherEmailDB(email:string){
+        const teacher = await prisma.teacher.findUnique({
+            where:{
+                email:email
+            }
+        });
+        return teacher;
+    }
+
 
     async getTeacherDB(id:number){
         const teacher = await prisma.teacher.findUnique({
