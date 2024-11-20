@@ -29,6 +29,8 @@
 ## Project setup
 
 ```bash
+$ git clone https://github.com/Luke-lab2002/student-management.git
+$ cd student-management
 $ npm install
 ```
 
