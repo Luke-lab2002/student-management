@@ -8,7 +8,7 @@ import { ScoreModule } from './modules/score/score.module';
 import { CourseModule } from './modules/course/course.module';
 import { ClassModule } from './modules/class/class.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { JwtAuthGuard } from './modules/guards/jwt.auth.guard';
+import { JwtAuthGuard } from './modules/guard/jwt.auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { delay } from './middleware/delay';
 

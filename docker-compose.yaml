@@ -14,7 +14,7 @@ services:
       - DATABASE_PASSWORD=rootpassword
       - DATABASE_NAME=nestdb
     ports:
-      - "3000:3000"  # Map cổng 3000 của container tới cổng 3000 của máy chủ
+      - "3000:3000"  
     depends_on:
       - db  # Đảm bảo dịch vụ MySQL đã sẵn sàng trước khi khởi động NestJS
 

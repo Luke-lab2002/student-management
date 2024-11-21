@@ -6,7 +6,6 @@ import {
     UnauthorizedException,
   } from '@nestjs/common';
   import { JwtService } from '@nestjs/jwt';
-  import { jwtConstants } from './constants';
   import { Request } from 'express';
   
   @Injectable()
@@ -23,7 +22,7 @@ import {
         const payload = await this.jwtService.verifyAsync(
           token,
           {
-            secret: jwtConstants.secret
+            secret: process.env.SCRET_KEY
           }
         );
         // 💡 We're assigning the payload to the request object here

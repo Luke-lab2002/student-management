@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Prisma, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { teacherDTO } from "./dto/teacher.dto";
 import * as bcrypt from 'bcrypt';
 
